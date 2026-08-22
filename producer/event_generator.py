@@ -8,9 +8,11 @@ import time
 from datetime import datetime
 from kafka import KafkaProducer
 
+# Kafka Configuration Done Here
+KAFKA_TOPIC = "userevents"
 producer = KafkaProducer(
     bootstrap_servers=['localhost:9092'],
-    value_serializer = lambda v : json.dumps(v).encode('utf-8')
+    value_serializer = lambda v: json.dumps(v).encode('utf-8')
 )
 
 event_type = ["order_created","order_received","order_shipped","order_processing","order_cancelled","order_return"]
@@ -30,10 +32,10 @@ def generate_ecommerce_event():
         yield event
 
 for event in generate_ecommerce_event():
-    producer.send('user_events', value=event)
+    producer.send(KAFKA_TOPIC, value=event)
     if event['event_type'] in ['created', 'done']:
         producer.send('order_events', value=event)
     elif event['event_type'] == 'received':
         producer.send('payment_events', value=event)
-    # print(f"Produced: {event}")
+    print(f"Produced: {event}")
     time.sleep(1)

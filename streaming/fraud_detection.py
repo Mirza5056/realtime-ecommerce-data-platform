@@ -2,10 +2,10 @@ import json
 from kafka import KafkaConsumer
 
 consumer = KafkaConsumer(
-    'user_events',
+    'userevents',
     bootstrap_servers=['localhost:9092'],
     group_id = 'fraud-detector-group',
-    value_serializer = lambda x : json.loads(x.decode('utf-8'))
+    value_deserializer = lambda x : json.loads(x.decode('utf-8'))
 )
 
 FRAUD_AMOUNT = 80000.00
