@@ -20,7 +20,7 @@ city_name = ["Mumbai","Delhi","Bengaluru","Hyderabad","Chennai","Kolkata","Ahmed
 
 def generate_ecommerce_event():
     # while True:
-        return event = {
+        return {
             "event_id": f"evt_{random.randint(10000, 99999)}",
             "user_id": f"usr_{random.randint(100, 999)}",
             "product_id": f"prd_{random.randint(100, 999)}",
