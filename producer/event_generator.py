@@ -75,7 +75,7 @@ def generate_ecommerce_event():
         "city": user["city"],
         "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
-print(generate_ecommerce_event())
+# print(generate_ecommerce_event())
 # def generate_ecommerce_event():
 #     # while True:
 #         return {
